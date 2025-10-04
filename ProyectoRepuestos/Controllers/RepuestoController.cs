@@ -4,6 +4,7 @@ using ProyectoRepuestos.Models.Dtos;
 using ProyectoRepuestos.Services;
 using AutoMapper;
 using ProyectoRepuestos.Bases;
+using ProyectoRepuestos.Helpers;
 
 namespace ProyectoRepuestos.Controllers;
 
@@ -11,8 +12,11 @@ namespace ProyectoRepuestos.Controllers;
 [Route("api/[controller]")]
 public class RepuestoController : BaseController<Repuesto, RepuestoDto>
 {
-        public RepuestoController(IRepuestoService repuestoService, IMapper mapper)
-        : base(repuestoService, mapper)
+    public RepuestoController(IRepuestoService repuestoService, IMapper mapper)
+    : base(repuestoService, mapper)
     {
     }
+
+    protected override string NotFoundMessage => Messages.Repuesto.NotFound;
+    protected override string DeletedMessage => Messages.Repuesto.Deleted;
 }
